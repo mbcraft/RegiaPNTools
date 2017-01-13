@@ -1,0 +1,24 @@
+.:
+total 16
+drwx------ 4 marco marco 4096 gen 13 18:57 .
+drwx------ 4 marco marco 4096 lug  2  2016 ..
+drwx------ 2 marco marco 4096 gen 11  2016 linux_test
+-rw-rw-r-- 1 marco marco    0 gen 13 18:57 required_files.txt
+drwxrwxr-x 2 marco marco 4096 lug  1  2016 usbit
+
+./linux_test:
+total 12
+drwx------ 2 marco marco 4096 gen 11  2016 .
+drwx------ 4 marco marco 4096 gen 13 18:57 ..
+-rw------- 1 marco marco   34 gen 11  2016 write_sd_image.sh
+
+./usbit:
+total 888
+drwxrwxr-x 2 marco marco   4096 lug  1  2016 .
+drwx------ 4 marco marco   4096 gen 13 18:57 ..
+-rw-rw-r-- 1 marco marco   1488 mag 26  2016 license.txt
+-rw-rw-r-- 1 marco marco  98816 mag 26  2016 USB Image Tool.exe
+-rw-rw-r-- 1 marco marco  30720 mag 26  2016 USB Image Tool Helper.dll
+-rw-rw-r-- 1 marco marco 529920 mag 26  2016 usbit32.dll
+-rw-rw-r-- 1 marco marco   6138 mag 26  2016 usbit32.txt
+-rw-rw-r-- 1 marco marco 219648 mag 26  2016 usbitcmd.exe

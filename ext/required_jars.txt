@@ -1,0 +1,13 @@
+.:
+total 12
+drwxrwxr-x  3 marco marco 4096 gen 13 18:56 .
+drwx------ 18 marco marco 4096 gen 13 18:53 ..
+drwxrwxr-x  2 marco marco 4096 lug  7  2016 mbcraft
+-rw-rw-r--  1 marco marco    0 gen 13 18:56 required_jars.txt
+
+./mbcraft:
+total 16
+drwxrwxr-x 2 marco marco 4096 lug  7  2016 .
+drwxrwxr-x 3 marco marco 4096 gen 13 18:56 ..
+lrwxrwxrwx 1 marco marco   73 lug  7  2016 jcommon -> /home/marco/IdeaProjects/MbcraftJCommon/out/artifacts/MbcraftJCommon_jar/
+lrwxrwxrwx 1 marco marco   81 lug  7  2016 juicommon -> /home/marco/NetBeansProjects/MbcraftJUICommon/out/artifacts/MbcraftJUICommon_jar/

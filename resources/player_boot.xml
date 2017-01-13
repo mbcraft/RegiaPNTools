@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties
+  SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<property name="registration_protocol">http</property>
+	<property name="registration_host">local__regiapn</property>
+	<property name="registration_page">/api/v1_0/notify/register_instance</property>
+	<property name="registration_code">1234</property>
+</properties>

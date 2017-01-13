@@ -1,0 +1,29 @@
+.:
+total 20
+drwx------ 5 marco marco 4096 gen 13 18:58 .
+drwx------ 4 marco marco 4096 lug  2  2016 ..
+drwxrwxr-x 2 marco marco 4096 lug 21 18:06 player
+drwx------ 2 marco marco 4096 lug  1  2016 raspberry-os
+-rw-rw-r-- 1 marco marco    0 gen 13 18:58 required_files.txt
+drwxrwxr-x 2 marco marco 4096 lug  8  2016 script
+
+./player:
+total 14748
+drwxrwxr-x 2 marco marco    4096 lug 21 18:06 .
+drwx------ 5 marco marco    4096 gen 13 18:58 ..
+-rw-rw-r-- 1 marco marco 7546419 lug  8  2016 player__20160707.zip
+-rw-rw-r-- 1 marco marco 7544733 lug 21 18:08 player__20160709.zip
+
+./raspberry-os:
+total 15556624
+drwx------ 2 marco marco       4096 lug  1  2016 .
+drwx------ 5 marco marco       4096 gen 13 18:58 ..
+-rw-rw-r-- 1 marco marco 7964983296 giu 13  2016 raspberry_os_servicep__04.img
+-rw-rw-r-- 1 marco marco 7964983296 giu 30  2016 raspberry_os_servicep__05.img
+
+./script:
+total 16
+drwxrwxr-x 2 marco marco 4096 lug  8  2016 .
+drwx------ 5 marco marco 4096 gen 13 18:58 ..
+-rw-rw-r-- 1 marco marco  764 lug  8  2016 check_deploy.sh
+-rw-rw-r-- 1 marco marco  176 lug  8  2016 start_service.sh

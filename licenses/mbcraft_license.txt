@@ -1,0 +1,7 @@
+The libraries covered by this license are distributed as part of this product.
+
+Do not copy, redistribute, disassemble, reverse engineer, edit or alter without prior permission from
+
+MBCRAFT di Marco Bagnaresi.
+
+Copyright MBCRAFT di Marco Bagnaresi - All rights reserved.

@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="regiapntools" default="all" xmlns:fx="javafx:com.sun.javafx.tools.ant">
+  
+  
+  <property file="build.properties"/>
+  <!-- Uncomment the following property if no tests compilation is needed -->
+  <!-- 
+  <property name="skip.tests" value="true"/>
+   -->
+  
+  <!-- Compiler options -->
+  
+  <property name="compiler.debug" value="on"/>
+  <property name="compiler.generate.no.warnings" value="off"/>
+  <property name="compiler.args" value=""/>
+  <property name="compiler.max.memory" value="700m"/>
+  <patternset id="ignored.files">
+    <exclude name="**/*.hprof/**"/>
+    <exclude name="**/*.pyc/**"/>
+    <exclude name="**/*.pyo/**"/>
+    <exclude name="**/*.rbc/**"/>
+    <exclude name="**/*.yarb/**"/>
+    <exclude name="**/*~/**"/>
+    <exclude name="**/.DS_Store/**"/>
+    <exclude name="**/.git/**"/>
+    <exclude name="**/.hg/**"/>
+    <exclude name="**/.svn/**"/>
+    <exclude name="**/CVS/**"/>
+    <exclude name="**/RCS/**"/>
+    <exclude name="**/SCCS/**"/>
+    <exclude name="**/__pycache__/**"/>
+    <exclude name="**/_svn/**"/>
+    <exclude name="**/rcs/**"/>
+    <exclude name="**/vssver.scc/**"/>
+    <exclude name="**/vssver2.scc/**"/>
+  </patternset>
+  <patternset id="library.patterns">
+    <include name="*.war"/>
+    <include name="*.swc"/>
+    <include name="*.ane"/>
+    <include name="*.apk"/>
+    <include name="*.zip"/>
+    <include name="*.egg"/>
+    <include name="*.jar"/>
+    <include name="*.ear"/>
+  </patternset>
+  <patternset id="compiler.resources">
+    <exclude name="**/?*.java"/>
+    <exclude name="**/?*.form"/>
+    <exclude name="**/?*.class"/>
+    <exclude name="**/?*.groovy"/>
+    <exclude name="**/?*.scala"/>
+    <exclude name="**/?*.flex"/>
+    <exclude name="**/?*.kt"/>
+    <exclude name="**/?*.clj"/>
+    <exclude name="**/?*.aj"/>
+  </patternset>
+  
+  <!-- JDK definitions -->
+  
+  <property name="jdk.bin.1.7" value="${jdk.home.1.7}/bin"/>
+  <path id="jdk.classpath.1.7">
+    <fileset dir="${jdk.home.1.7}">
+      <include name="jre/lib/charsets.jar"/>
+      <include name="jre/lib/deploy.jar"/>
+      <include name="jre/lib/ext/dnsns.jar"/>
+      <include name="jre/lib/ext/localedata.jar"/>
+      <include name="jre/lib/ext/sunec.jar"/>
+      <include name="jre/lib/ext/sunjce_provider.jar"/>
+      <include name="jre/lib/ext/sunpkcs11.jar"/>
+      <include name="jre/lib/ext/zipfs.jar"/>
+      <include name="jre/lib/javaws.jar"/>
+      <include name="jre/lib/jce.jar"/>
+      <include name="jre/lib/jfr.jar"/>
+      <include name="jre/lib/jfxrt.jar"/>
+      <include name="jre/lib/jsse.jar"/>
+      <include name="jre/lib/management-agent.jar"/>
+      <include name="jre/lib/plugin.jar"/>
+      <include name="jre/lib/resources.jar"/>
+      <include name="jre/lib/rt.jar"/>
+    </fileset>
+  </path>
+  
+  <property name="project.jdk.home" value="${jdk.home.1.7}"/>
+  <property name="project.jdk.bin" value="${jdk.bin.1.7}"/>
+  <property name="project.jdk.classpath" value="jdk.classpath.1.7"/>
+
+  <taskdef resource="com/sun/javafx/tools/ant/antlib.xml"
+           uri="javafx:com.sun.javafx.tools.ant"
+           classpath=".:${project.jdk.home}/lib/ant-javafx.jar"/>
+  
+  
+  <!-- Project Libraries -->
+  
+  <path id="library.commons.classpath">
+    <fileset dir="${basedir}/lib/commons">
+      <patternset refid="library.patterns"/>
+    </fileset>
+  </path>
+  
+  <path id="library.http.classpath">
+    <fileset dir="${basedir}/lib/http">
+      <patternset refid="library.patterns"/>
+    </fileset>
+  </path>
+
+  <path id="library.junit_4.classpath">
+    <fileset dir="${basedir}/lib/junit_4">
+      <patternset refid="library.patterns"/>
+    </fileset>
+  </path>
+  
+  <path id="library.logging.classpath">
+    <fileset dir="${basedir}/lib/logging">
+      <patternset refid="library.patterns"/>
+    </fileset>
+  </path>
+  
+  <path id="library.net.classpath">
+    <fileset dir="${basedir}/lib/net">
+      <patternset refid="library.patterns"/>
+    </fileset>
+  </path>
+
+  <path id="library.mbcraft.classpath">
+    <fileset dir="${basedir}/lib/mbcraft">
+      <patternset refid="library.patterns"/>
+    </fileset>
+  </path>
+
+  <!-- Register Custom Compiler Taskdefs -->
+  <property name="javac2.home" value="${idea.home}/lib"/>
+  <path id="javac2.classpath">
+    <pathelement location="${javac2.home}/javac2.jar"/>
+    <pathelement location="${javac2.home}/jdom.jar"/>
+    <pathelement location="${javac2.home}/asm-all.jar"/>
+    <pathelement location="${javac2.home}/jgoodies-forms.jar"/>
+  </path>
+  <target name="register.custom.compilers">
+    <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="javac2.classpath"/>
+    <taskdef name="instrumentIdeaExtensions" classname="com.intellij.ant.InstrumentIdeaExtensions" classpathref="javac2.classpath"/>
+  </target>
+  
+  <!-- Modules -->
+  
+  
+  <!-- Module RegiaPNTools -->
+  
+  <dirname property="module.regiapntools.basedir" file="${ant.file}"/>
+  
+  
+  <property name="module.jdk.home.regiapntools" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.regiapntools" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.regiapntools" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.regiapntools" value="-encoding UTF-8 -source 1.7 -target 1.7 ${compiler.args}"/>
+  
+  <property name="regiapntools.output.dir" value="build/production"/>
+  <property name="regiapntools.testoutput.dir" value="build/tests"/>
+  
+  <path id="regiapntools.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="regiapntools.module.production.classpath">
+    <path refid="${module.jdk.classpath.regiapntools}"/>
+    <path refid="library.commons.classpath"/>
+    <path refid="library.http.classpath"/>
+    <path refid="library.junit_4.classpath"/>
+    <path refid="library.net.classpath"/>
+    <path refid="library.logging.classpath"/>
+    <path refid="library.mbcraft.classpath"/>
+  </path>
+  
+  <path id="regiapntools.runtime.production.module.classpath">
+    <path refid="library.commons.classpath"/>
+    <path refid="library.http.classpath"/>
+    <path refid="library.junit_4.classpath"/>
+    <path refid="library.net.classpath"/>
+    <path refid="library.logging.classpath"/>
+    <path refid="library.mbcraft.classpath"/>
+  </path>
+  
+  <path id="regiapntools.module.classpath">
+    <path refid="${module.jdk.classpath.regiapntools}"/>
+    <path refid="library.commons.classpath"/>
+    <path refid="library.http.classpath"/>
+    <path refid="library.junit_4.classpath"/>
+    <path refid="library.net.classpath"/>
+    <path refid="library.logging.classpath"/>
+    <path refid="library.mbcraft.classpath"/>
+  </path>
+  
+  <path id="regiapntools.runtime.module.classpath">
+    <path refid="library.commons.classpath"/>
+    <path refid="library.http.classpath"/>
+    <path refid="library.junit_4.classpath"/>
+    <path refid="library.net.classpath"/>
+    <path refid="library.logging.classpath"/>
+    <path refid="library.mbcraft.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.regiapntools">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.regiapntools">
+    <patternset refid="excluded.from.module.regiapntools"/>
+  </patternset>
+  
+  <path id="regiapntools.module.sourcepath">
+    <dirset dir="${module.regiapntools.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.regiapntools" depends="compile.module.regiapntools.production,compile.module.regiapntools.tests" description="Compile module RegiaPNTools"/>
+  
+  <target name="compile.module.regiapntools.production" depends="register.custom.compilers" description="Compile module RegiaPNTools; production classes">
+    <mkdir dir="${regiapntools.output.dir}"/>
+    <javac2 destdir="${regiapntools.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.regiapntools}/javac">
+      <compilerarg line="${compiler.args.regiapntools}"/>
+      <bootclasspath refid="regiapntools.module.bootclasspath"/>
+      <classpath refid="regiapntools.module.production.classpath"/>
+      <src refid="regiapntools.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.regiapntools"/>
+    </javac2>
+    
+    <copy todir="${regiapntools.output.dir}">
+      <fileset dir="${module.regiapntools.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.regiapntools.tests" depends="register.custom.compilers,compile.module.regiapntools.production" description="compile module RegiaPNTools; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.regiapntools" description="cleanup module">
+    <delete dir="${regiapntools.output.dir}"/>
+    <delete dir="${regiapntools.testoutput.dir}"/>
+  </target>
+
+  <target name="clean.importedlibs" depends="clean.mbcraft.libraries" />
+
+  <target name="clean.mbcraft.libraries">
+    <delete dir="lib/mbcraft" />
+  </target>
+
+  <target name="prepare.mbcraft.libraries">
+    <mkdir dir="lib/mbcraft" />
+    <copy todir="lib/mbcraft">
+      <fileset dir="ext/mbcraft/jcommon">
+        <patternset refid="library.patterns" />
+      </fileset>
+      <fileset dir="ext/mbcraft/juicommon">
+        <patternset refid="library.patterns" />
+      </fileset>
+    </copy>
+  </target>
+
+  <target name="prepare.importedlibs" depends="prepare.mbcraft.libraries"/>
+
+  <target name="prepare" depends="prepare.importedlibs" />
+  
+  <target name="init" description="Build initialization">
+    <!-- Perform any build initialization in this target -->
+  </target>
+  
+  <target name="clean" depends="clean.module.regiapntools, clean.importedlibs" description="cleanup all"/>
+  
+  <target name="build.modules" depends="init, clean, prepare, compile.module.regiapntools" description="build all modules"/>
+
+  <target name="all" depends="build.modules, jar" description="build all"/>
+
+
+  <fx:application id="RegiaPNTools"
+                  name="RegiaPNToolsApp"
+                  mainClass="it.mbcraft.regiapn.tools.Main"/>
+
+  <target name="jar">
+    <delete dir="dist" />
+    <mkdir dir="dist" />
+    <mkdir dir="dist/lib" />
+    <copy todir="dist/lib" flatten="true">
+      <path refid="library.commons.classpath"/>
+      <path refid="library.http.classpath"/>
+      <path refid="library.mbcraft.classpath"/>
+      <path refid="library.junit_4.classpath"/>
+      <path refid="library.net.classpath"/>
+      <path refid="library.logging.classpath"/>
+    </copy>
+
+    <fx:resources id="appDependencies">
+      <fx:fileset dir="dist" />
+    </fx:resources>
+
+    <fx:jar destfile="${regiapntools.output.jarfile}">
+      <fx:application refid="RegiaPNTools"/>
+      <fileset dir="${regiapntools.output.dir}"/>
+      <fx:resources refid="appDependencies" />
+    </fx:jar>
+
+  </target>
+
+</project>
